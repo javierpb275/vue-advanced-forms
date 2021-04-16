@@ -7,7 +7,8 @@
                     v-model="personal_data.name"
                     v-validate="'required|min:2'"
                     :state="$parent.validateState('name')"
-                    name="name" placeholder="Name...">
+                    name="name" data-vv-as="name"
+                    placeholder="Name...">
                     </b-form-input>
 <!--$parent: access the parent (component that displays this component) to the validateState() method that we get from the mixins-->
                     <b-form-invalid-feedback>
@@ -21,7 +22,8 @@
                     v-model="personal_data.surname"
                     v-validate="'required|min:4'"
                     :state="$parent.validateState('surname')"
-                    name="surname" placeholder="Surname...">
+                    name="surname" data-vv-as="surname"
+                    placeholder="Surname...">
                     </b-form-input>
                     <b-form-invalid-feedback>
                         {{errors.first('surname')}}
