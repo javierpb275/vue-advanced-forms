@@ -34,6 +34,7 @@
 
 <script>
 export default {
+    inject:['$validator'],//inject the instance of vee-validate so I can use it here (access: v-validate, errors...)
     props: {
         personal_data: {
             type: Object,
