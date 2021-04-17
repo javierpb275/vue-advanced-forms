@@ -16,11 +16,15 @@
 <script>
 import ActivityTypeSelection from '../components/ActivityForm/ActivityTypeSelection';
 import ActivityPersonalData from '../components/ActivityForm/ActivityPersonalData';
+import Basket from '../components/ActivityForm/Types/Basket';
+import Football from '../components/ActivityForm/Types/Football';
+import Tennis from '../components/ActivityForm/Types/Tennis';
 import validationMixin from '../mixins/validation';
 
 export default {
     components: {
-        ActivityPersonalData, ActivityTypeSelection
+        ActivityPersonalData, ActivityTypeSelection,
+        Basket, Football, Tennis
     },
     mixins: [validationMixin],
    data() {
