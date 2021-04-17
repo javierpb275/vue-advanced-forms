@@ -102,6 +102,13 @@ export default {
            }
        }
    },
+   async mounted() {
+       const {data} = await this.axios({
+           method:'GET',
+           url:'activities_subscriptions/1'//when we submit and is remounted we see the data that we sent in the fields
+       });
+       this.activity = data;
+   },
    computed: {
        activityComponent() {
            switch(this.activity.activity_type_selection.type) {
