@@ -2,6 +2,9 @@
     <b-form @submit.prevent="submitActivity" class="mb-5">
         <activity-personal-data :personal_data="activity.personal_data" ></activity-personal-data>
         <activity-type-selection :activity_type_selection="activity.activity_type_selection"></activity-type-selection>
+        <component :is="activityComponent"
+        :activity_selected_data="activity.activity_selected_data">
+        </component>
         <b-row>
             <b-col>
                 <!--this runs submitActivity() since it is type submit-->
@@ -49,6 +52,20 @@ export default {
                    team: '',
                    information: ''
                }
+           }
+       }
+   },
+   computed: {
+       activityComponent() {
+           switch(this.activity.activity_type_selection.type) {
+               case 1: 
+                return 'football';
+               case 2:
+                return 'basket';
+               case 3:
+                return 'tennis';
+               default:
+                return 'football';
            }
        }
    },
