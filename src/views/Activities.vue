@@ -126,7 +126,18 @@ export default {
            if(!validate) {
                return false;
            }
-           alert('success');
+           
+           try {
+            await this.axios({
+              method: 'POST',
+              url: '/activities_subscriptions',//this endpoint comes from our json-server
+              data: this.activity
+            })
+            this.clearFormAndErrors()
+          } catch (e) {
+            console.log(e)
+          }
+
        },
         clearForm () {
           Object.assign(this.$data, this.$options.data.apply(this)) // this way we can clear a form completely
