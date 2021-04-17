@@ -14,18 +14,52 @@
                     :state="activity.terms ? 'valid' : (reset ? null : 'invalid')"
                     :unchecked-value="false"
                 >
-                    Acepto los términos de uso
+                    Accept terms
                 </b-form-checkbox>
             </b-col>
         </b-row>
-        <b-row class="mt-3">
+        <b-row>
             <b-col>
-                <!--this runs submitActivity() since it is type submit-->
-                <b-btn variant="primary" type="submit">
-                    Submit
-                </b-btn>
+                <b-button
+                    class="mt-3"
+                    type="submit"
+                    variant="primary"
+                    block
+                >
+                    Send
+                </b-button>
+            </b-col>
+            <b-col>
+                <b-button
+                    class="mt-3 text-white"
+                    variant="warning"
+                    block
+                    @click="clearErrors"
+                >
+                    Clear Errors
+                </b-button>
+            </b-col>
+            <b-col>
+                <b-button
+                    class="mt-3 text-white"
+                    block
+                    variant="info"
+                    @click="clearForm"
+                >
+                    Clear Form
+                </b-button>
+            </b-col>
+            <b-col>
+                <b-button
+                    class="mt-3 text-white"
+                    block
+                    @click="clearFormAndErrors"
+                >
+                    Clear Form And Errors
+                </b-button>
             </b-col>
         </b-row>
+
     </b-form>
 </template>
 
@@ -93,7 +127,18 @@ export default {
                return false;
            }
            alert('success');
-       }
+       },
+        clearForm () {
+          Object.assign(this.$data, this.$options.data.apply(this)) // this way we can clear a form completely
+        },
+        clearErrors () {
+          this.reset = true
+          this.$validator.reset()// this way we can clear the errors
+        },
+        clearFormAndErrors () {
+          this.clearForm()
+          this.clearErrors()
+        }
    }
 }
 </script>
